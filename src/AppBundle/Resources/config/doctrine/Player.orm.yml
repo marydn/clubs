@@ -1,6 +1,6 @@
 AppBundle\Entity\Player:
     type: entity
-    table: null
+    table: player
     repositoryClass: AppBundle\Repository\PlayerRepository
     id:
         id:
@@ -12,4 +12,11 @@ AppBundle\Entity\Player:
         name:
             type: string
             length: 255
+    manyToOne:
+        club:
+            targetEntity: AppBundle\Entity\Club
+            inversedBy: players
+            joinColumn:
+              name: club_id
+              referencedColumnName: id
     lifecycleCallbacks: {  }

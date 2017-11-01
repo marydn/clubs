@@ -1,6 +1,6 @@
 AppBundle\Entity\Club:
     type: entity
-    table: null
+    table: club
     repositoryClass: AppBundle\Repository\ClubRepository
     id:
         id:
@@ -24,4 +24,8 @@ AppBundle\Entity\Club:
         updatedAt:
             type: datetime
             column: updated_at
+    oneToMany:
+        players:
+            targetEntity: AppBundle\Entity\Player
+            mappedBy: club
     lifecycleCallbacks: {  }
