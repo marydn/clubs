@@ -2,6 +2,10 @@ AppBundle\Entity\Club:
     type: entity
     table: club
     repositoryClass: AppBundle\Repository\ClubRepository
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
     id:
         id:
             type: integer
@@ -18,14 +22,23 @@ AppBundle\Entity\Club:
         deletedAt:
             type: datetime
             column: deleted_at
+            nullable: true
         createdAt:
             type: datetime
             column: created_at
+            gedmo:
+                timestampable:
+                    on: create
         updatedAt:
             type: datetime
             column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
     oneToMany:
         players:
             targetEntity: AppBundle\Entity\Player
             mappedBy: club
+            cascade: ["persist", "remove"]
+            orderBy: {name: 'ASC'}
     lifecycleCallbacks: {  }

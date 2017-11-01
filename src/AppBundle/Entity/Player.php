@@ -60,7 +60,7 @@ class Player
      * @param Club $club
      * @return $this
      */
-    public function setClub(Club $club)
+    public function setClub(Club $club = null)
     {
         $this->club = $club;
 

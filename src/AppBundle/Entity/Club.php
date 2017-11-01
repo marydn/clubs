@@ -187,6 +187,7 @@ class Club
      */
     public function addPlayer(Player $player)
     {
+        $player->setClub($this);
         $this->players[] = $player;
 
         return $this;
@@ -199,6 +200,24 @@ class Club
     public function removePlayer(Player $player)
     {
         $this->players->removeElement($player);
+        $player->setClub(null);
+
+        return $this;
+    }
+
+    /**
+     * @param array $players
+     * @return $this
+     */
+    public function setPlayers(array $players)
+    {
+        foreach ($players as $player) {
+            if ($this->players->contains($players)) {
+                $this->addPlayer($player);
+            } else {
+                $this->removePlayer($player);
+            }
+        }
 
         return $this;
     }

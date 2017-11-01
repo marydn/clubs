@@ -16,7 +16,9 @@ AppBundle\Entity\Player:
         club:
             targetEntity: AppBundle\Entity\Club
             inversedBy: players
-            joinColumn:
-              name: club_id
-              referencedColumnName: id
+            nullable: true
+            cascade: ["persist", "remove"]
+            joinColumns:
+                club_id:
+                    referencedColumnName: id
     lifecycleCallbacks: {  }
