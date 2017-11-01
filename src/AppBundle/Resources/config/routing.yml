@@ -1,0 +1,19 @@
+list:
+    path:     /
+    defaults: { _controller: AppBundle:Club:list }
+
+create:
+    path:     /create
+    defaults: { _controller: AppBundle:Club:create }
+
+update:
+    path:     /update/{id}
+    defaults: { _controller: AppBundle:Club:update }
+
+remove:
+    path:     /remove/{id}
+    defaults: { _controller: AppBundle:Club:remove }
+
+player_create:
+    path:     /player/create
+    defaults: { _controller: AppBundle:Player:create }
