@@ -10,4 +10,23 @@ namespace AppBundle\Repository;
  */
 class ClubRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param null $name
+     * @param null $phone
+     * @return array
+     */
+    public function search($name = null, $phone = null)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        if ($name) {
+            $qb->andWhere($qb->expr()->like('c.name', ':name'))->setParameter('name', $name);
+        }
+
+        if ($phone) {
+            $qb->andWhere('c.phone = :phone')->setParameter('phone', $phone);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
