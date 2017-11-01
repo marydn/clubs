@@ -21,7 +21,9 @@ class SearchController extends Controller
      */
     public function searchAction(Request $request)
     {
-        $form = $this->createForm(SearchType::class);
+        $form = $this->createForm(SearchType::class, null, array(
+            'action' => $this->generateUrl('search')
+        ));
 
         $form->handleRequest($request);
 
@@ -35,7 +37,7 @@ class SearchController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function resultsAction(Request $request)
+    public function resultAction(Request $request)
     {
         $clubs = array();
         $form = $this->createForm(SearchType::class);
@@ -45,7 +47,7 @@ class SearchController extends Controller
         if ($form->isValid()) {
             $clubs = $this->getDoctrine()->getManager()
                 ->getRepository('AppBundle:Club')
-                ->search($form->get('name')->getData(), $form->get('phone')->getData());
+                ->search($form->get('club')->getData(), $form->get('phone')->getData());
         }
 
         return $this->render('AppBundle:Search:list.html.twig', array(

@@ -20,7 +20,7 @@ class ClubRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('c');
 
         if ($name) {
-            $qb->andWhere($qb->expr()->like('c.name', ':name'))->setParameter('name', $name);
+            $qb->andWhere($qb->expr()->like('c.name', $qb->expr()->literal('%'.strtolower($name).'%')));
         }
 
         if ($phone) {

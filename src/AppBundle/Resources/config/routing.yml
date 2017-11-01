@@ -17,3 +17,7 @@ remove:
 player_create:
     path:     /player/create
     defaults: { _controller: AppBundle:Player:create }
+
+search:
+    path:     /search
+    defaults: { _controller: AppBundle:Search:result }

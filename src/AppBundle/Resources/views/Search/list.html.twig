@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Búsqueda{% endblock %}
+
+{% block body %}
+
+    <h1>Búsqueda</h1>
+
+    <table class="table table-responsive" id="clubs">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for club in clubs %}
+            <tr>
+                <td><a href="{{ path('update', {id: club.id}) }}">{{ club.id }}</a></td>
+                <td><a href="{{ path('update', {id: club.id}) }}">{{ club.name }}</a></td>
+                <td>{{ club.phone }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

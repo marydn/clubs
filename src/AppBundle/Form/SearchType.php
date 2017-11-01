@@ -22,9 +22,17 @@ class SearchType extends AbstractType
         $builder
             ->add('club', TextType::class, array(
                 'label' => 'Club:',
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Club:'
+                ),
             ))
             ->add('phone', TextType::class, array(
-                'label' => 'Teléfono'
+                'label' => 'Teléfono',
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Teléfono:'
+                ),
             ));
     }
 
