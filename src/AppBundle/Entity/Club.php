@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Club
@@ -37,6 +38,18 @@ class Club
      */
     private $updatedAt;
 
+    /**
+     * @var ArrayCollection
+     */
+    private $players;
+
+    /**
+     * Club constructor.
+     */
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -167,5 +180,34 @@ class Club
     {
         return $this->updatedAt;
     }
-}
 
+    /**
+     * @param Player $player
+     * @return $this
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * @param Player $player
+     * @return $this
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+}

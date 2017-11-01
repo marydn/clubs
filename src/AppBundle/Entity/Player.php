@@ -17,6 +17,10 @@ class Player
      */
     private $name;
 
+    /**
+     * @var Club
+     */
+    private $club;
 
     /**
      * Get id
@@ -51,5 +55,31 @@ class Player
     {
         return $this->name;
     }
-}
 
+    /**
+     * @param Club $club
+     * @return $this
+     */
+    public function setClub(Club $club)
+    {
+        $this->club = $club;
+
+        return $this;
+    }
+
+    /**
+     * @return Club
+     */
+    public function getClub()
+    {
+        return $this->club;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+}
